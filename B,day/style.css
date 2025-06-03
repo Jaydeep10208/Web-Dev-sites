@@ -1,0 +1,243 @@
+body {
+      background: linear-gradient(135deg, #f7c3d1 0%, #ffe5ec 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+  }
+
+  body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background-image:
+          radial-gradient(circle, #fff7 1px, transparent 1.5px),
+          radial-gradient(circle, #ffe5 1.5px, transparent 2px),
+          radial-gradient(circle, #fff3 1px, transparent 1.5px);
+      background-size: 80px 80px, 120px 120px, 200px 200px;
+      background-position: 0 0, 40px 60px, 100px 120px;
+      z-index: 0;
+  }
+
+  .cake {
+    position: relative;
+    width: 180px;
+    height: 90px;
+    background: linear-gradient(180deg, #a9744f 60%, #8b5e3c 100%);
+    border-radius: 18px 18px 14px 14px/20px 20px 18px 18px;
+    box-shadow: 0 8px 32px #d2691e44, 0 2px 0 #fff inset;
+    animation: riseCake 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    margin-bottom: 10px;
+    z-index: 2;
+    opacity: 0;
+    /* Cake base appears first */
+    animation-delay: 0.2s;
+}
+
+  .cake:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 14px;
+    background: repeating-linear-gradient(
+        90deg,
+        #fff 0 12px,
+        #f7c3d1 12px 24px
+    );
+    top: 0;
+    border-radius: 18px 18px 0 0/20px 20px 0 0;
+    animation: drizzle 0.8s 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    z-index: 2;
+    opacity: 0;
+}
+
+  .cake:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 14px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ffe5ec 0 12px,
+        #fff 12px 24px
+    );
+    top: 24px;
+    border-radius: 18px 18px 0 0/20px 20px 0 0;
+    animation: drizzle 0.8s 1.5s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    z-index: 2;
+    opacity: 0;
+}
+
+/* Candle appears after icing */
+.candle {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 36px;
+    background: repeating-linear-gradient(
+        135deg,
+        #fff 0 6px,
+        #f7c3d1 6px 12px
+    );
+    border-radius: 5px;
+    box-shadow: 0 2px 6px #d2691e33;
+    border: 1.5px solid #e6b8a2;
+    animation: appearCandle 0.7s 2.1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    z-index: 3;
+    opacity: 0;
+}
+
+/* Flame appears last */
+.flame {
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 28px;
+    background: radial-gradient(ellipse at center, #fff700 60%, #ff9900 100%);
+    border-radius: 50% 50% 60% 60%;
+    box-shadow:
+        0 0 30px 12px #fff700,
+        0 0 60px 24px #ff9900,
+        0 0 100px 40px #ff9900;
+    opacity: 0;
+    z-index: 4;
+    animation: flameAppear 0.5s 2.7s cubic-bezier(.68,-0.55,.27,1.55) forwards,
+               flicker 0.3s 3.2s infinite alternate,
+               flame-flicker 1.2s 3.2s infinite alternate;
+}
+
+/* Message fades in after cake is ready */
+.message {
+    margin-top: 30px;
+    color: #a9744f;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    text-shadow: 0 2px 8px #fff, 0 1px 0 #f7c3d1;
+    animation: fadeIn 1s 3.3s forwards;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .message span {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.3rem;
+      color: #d2691e;
+      letter-spacing: 2px;
+      text-shadow: 0 1px 0 #fff;
+  }
+
+  /* Confetti */
+  .confetti {
+      position: fixed;
+      top: 0;
+      width: 12px;
+      height: 20px;
+      border-radius: 4px;
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 9999;
+      animation: confetti-fall linear forwards;
+      border: 1px solid #fff3;
+      box-shadow: 0 2px 6px #fff7;
+  }
+
+  @keyframes confetti-fall {
+      to {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0.6;
+      }
+  }
+
+  /* Animations */
+  @keyframes riseCake {
+      from {
+          transform: translateY(100px) scale(0.8);
+          opacity: 0;
+      }
+
+      to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+      }
+  }
+
+  @keyframes appearCandle {
+      from {
+          opacity: 0;
+          transform: translate(-50%, 20px) scaleY(0.7);
+      }
+
+      to {
+          opacity: 1;
+          transform: translate(-50%, 0) scaleY(1);
+      }
+  }
+
+  @keyframes drizzle {
+      from {
+          height: 0;
+          opacity: 0;
+      }
+
+      to {
+          height: 14px;
+          opacity: 0.9;
+      }
+  }
+
+  @keyframes flicker {
+      from {
+          transform: translateX(-50%) scale(1);
+          opacity: 1;
+      }
+
+      to {
+          transform: translateX(-50%) scale(1.2);
+          opacity: 0.7;
+      }
+  }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+
+      to {
+          opacity: 1;
+      }
+  }
+
+  @keyframes flame-flicker {
+      0% {
+          opacity: 0.92;
+          transform: translateX(-50%) scaleY(1);
+      }
+
+      50% {
+          opacity: 1;
+          transform: translateX(-50%) scaleY(1.18) scaleX(0.93);
+      }
+
+      100% {
+          opacity: 0.7;
+          transform: translateX(-50%) scaleY(0.92) scaleX(1.07);
+      }
+  }
+
+  /* New keyframes for flame appearing */
+@keyframes flameAppear {
+    from { opacity: 0; transform: translateX(-50%) scale(0.5);}
+    to   { opacity: 0.92; transform: translateX(-50%) scale(1);}
+}
