@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Quiz App</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="login-container">
+      <h1>Login to Quiz</h1>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required style="margin-bottom:10px;width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ccc;">
+        <input type="password" id="password" placeholder="Password" required style="margin-bottom:10px;width:100%;padding:0.7rem;border-radius:8px;border:1px solid #ccc;">
+        <button type="submit" style="width:100%;padding:0.7rem;border-radius:8px;background:linear-gradient(90deg,#2575fc,#6a11cb);color:#fff;font-weight:600;border:none;">Login</button>
+      </form>
+      <div id="login-error" style="color:#fc466b;margin-top:8px;display:none;text-align:center;"></div>
+    </div>
+    <div id="quiz-content" style="display:none;">
+      <h1>Mini Quiz</h1>
+      <div id="question-container">
+        <div id="question">Question text</div>
+        <div id="answer-buttons" class="btn-container"></div>
+      </div>
+      <button id="next-btn">Next</button>
+    </div>
+    <div id="scoreboard" style="display:none;">
+      <h2>Scoreboard</h2>
+      <ul id="score-list" style="list-style:none;padding:0;"></ul>
+      <button id="play-again-btn" style="margin-top:1rem;padding:0.7rem 1.2rem;border-radius:8px;background:linear-gradient(90deg,#2575fc,#6a11cb);color:#fff;font-weight:600;border:none;">Play Again</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.quiz-container {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2.5rem 2rem;
+  border-radius: 22px;
+  width: 370px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  z-index: 1;
+  animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 20px 2px #6a11cb, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-color: #2575fc;
+  }
+  50% {
+    box-shadow: 0 0 30px 8px #2575fc, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-color: #6a11cb;
+  }
+  100% {
+    box-shadow: 0 0 20px 2px #6a11cb, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-color: #2575fc;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #2575fc;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 1.8rem;
+}
+
+#question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+button, .btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37,117,252,0.10);
+  transition: background 0.2s, transform 0.1s, color 0.2s;
+  outline: none;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  transform: translateY(-2px) scale(1.03);
+  color: #fff;
+}
+
+.btn.correct {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+}
+
+.btn.wrong {
+  background: linear-gradient(90deg, #fc466b 0%, #3f5efb 100%);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+}
+
+#next-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+  color: #333;
+  box-shadow: 0 2px 8px rgba(255,204,51,0.15);
+}
+
+#next-btn:hover {
+  background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+  color: #222;
+  transform: translateY(-2px) scale(1.03);
+}
